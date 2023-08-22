@@ -1,2 +1,1 @@
-# BetaPortfolio-Web
-BetaPortfolio on Web
+# BetaPortfolio
