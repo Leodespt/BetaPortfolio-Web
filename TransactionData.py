@@ -1,5 +1,6 @@
 import pandas as pd
 from dash import callback
+import os
 # Google sheet connection libraries
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -13,8 +14,12 @@ def import_data_fonction():
     scope = ['https://www.googleapis.com/auth/spreadsheets',#Enable Google Sheet API
             "https://www.googleapis.com/auth/drive"] #Enable Google Drive API
 
+    # Construct the full path to the credentials file
+    credentials_path = os.path.join(os.path.dirname(__file__), "gs_credentials.json")
+
+
     # Cretentials
-    credentials = ServiceAccountCredentials.from_json_keyfile_name("gs_credentials.json", scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(credentials_path, scope)#"gs_credentials.json"
     client = gspread.authorize(credentials)
 
     # Open the spreadsheet
