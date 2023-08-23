@@ -18,7 +18,7 @@ def import_data_fonction():
     client = gspread.authorize(credentials)
 
     # Open the spreadsheet
-    spreadsheet = client.spreadsheet = client.open_by_url('https://docs.google.com/spreadsheets/d/1abr3MTAxaynCIeiDPEN-WzYt0ht6IeUWvHThTr4CxnI/edit#gid=0')
+    spreadsheet = client.open_by_url('https://docs.google.com/spreadsheets/d/1abr3MTAxaynCIeiDPEN-WzYt0ht6IeUWvHThTr4CxnI/edit#gid=0')
 
     wks = spreadsheet.worksheet('Transactions')
     data = wks.get_all_values()
