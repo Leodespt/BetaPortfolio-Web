@@ -38,7 +38,9 @@ def import_data_fonction():
     # Use the data_formating function to format the data
     dataframe = data_formating(dataframe,currency)
 
-    dataframe.to_csv("data.csv", encoding='utf-8')
+    if not dataframe.empty:
+        dataframe.to_csv("data.csv", encoding='utf-8')
+
     df = pd.read_csv("data.csv")
 
     return df#dataframe
