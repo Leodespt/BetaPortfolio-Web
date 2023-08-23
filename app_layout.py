@@ -24,20 +24,6 @@ Menu = html.Div(
     className="my-3",
 )
 
-"""
-Currency = html.Div([
-            dcc.RadioItems(
-                id='currency-options',
-                options=[
-                    {'label': 'USD $', 'value': 'USD'},
-                    {'label': 'EUR €', 'value': 'EUR'}
-                ],
-                value='USD',
-                labelStyle={'display': 'inline-block', 'margin-right': '10px'}
-            ),
-            html.Br(),
-        ])
-"""
 
 # Navbar configuration, enables to see the Menu button at the top of each page
 navbar = dbc.Navbar(
