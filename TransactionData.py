@@ -91,6 +91,7 @@ def data_formating(df,currency='USD'):
         df.loc[df['fiat'] == 'EUR', 'qty_spent'] = df[df['fiat']=='EUR']['qty_spent']/USD_value
         df.loc[df['fiat'] == 'EUR', 'fiat'] ='USD'
     """
+
     return df
 
 import_data = import_data_fonction()
@@ -202,16 +203,23 @@ def market_price(df, crypto_symbols = crypto()):
             crypto_string+=','
         i+=1
 
+    crypto_string = crypto_string.replace(',ETHBULL,BULL,', ',')
+    print(crypto_string)
+
     # Extraction of crypto market values via API
     url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms="+crypto_string+"&tsyms=USD,EUR&api_key={91b714f904430f669a18cd914ee8e84c7fc1c4a4529517df029c41c2929b5f12}"
     response = urllib.request.urlopen(url)
     crypto_values = json.loads(response.read())
 
     # Insert BULL values into basic crypto market data
-    crypto_values.update(bull_data(df))
+    #crypto_values.update(bull_data(df))
 
     market = crypto_values
     market_summary = {'BTC' : 0}
+
+    import numpy as np
+    crypto_symbols = np.setdiff1d(crypto_symbols, ["ETHBULL", "BULL"])
+
 
     # Get the EUR price of each crypto
     for asset in crypto_symbols:

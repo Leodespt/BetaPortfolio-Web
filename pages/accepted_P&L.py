@@ -24,7 +24,7 @@ CARD_STYLE = {
 
 dash.register_page(__name__,name = 'Accepeted P&L',title='Accepeted P&L')
 
-# Link the TransactionData to the wallet page
+# Link the TransactionData to the P&L page
 df = T.import_data
 df = T.actual_summary(df)[1]
 df = T.final_pl(df)
